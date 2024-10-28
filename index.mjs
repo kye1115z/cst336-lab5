@@ -7,14 +7,12 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
-  //   let homeBg = await randomImage();
-  let homeBg = "";
+  let homeBg = await randomImage();
   res.render("home", { homeBg });
 });
 
 app.get("/planetInfo", async (req, res) => {
   let body = req.query.selectedBody;
-  console.log(body);
 
   if (body === "Comet" || body === "Asteroid") {
     let celestialBodyInfo;
@@ -23,7 +21,6 @@ app.get("/planetInfo", async (req, res) => {
     } else if (body === "Asteroid") {
       celestialBodyInfo = planets.getAsteroids();
     }
-    console.log(celestialBodyInfo);
     res.render("celestialBody", {
       celestialBodyInfo: celestialBodyInfo,
       bodyName: body,
@@ -51,7 +48,6 @@ app.get("/planetInfo", async (req, res) => {
     } else if (body === "Neptune") {
       planetBodyInfo = planets.getNeptune();
     }
-    console.log(planetBodyInfo);
     res.render("planetBody", {
       planetBodyInfo: planetBodyInfo,
       bodyName: body,
@@ -62,18 +58,15 @@ app.get("/planetInfo", async (req, res) => {
 app.get("/nasa", async (req, res) => {
   let date = new Date();
   let nasaData;
-  date = date.toISOString().split("T")[0];
+
+  date = date.toLocaleDateString("en-CA");
   let todayData = await getNasaData(date);
-  console.log("today");
-  console.log(todayData);
 
   const { month, day, year } = req.query;
   if (month && day && year) {
     date = `${year}-${month}-${day}`;
     nasaData = await getNasaData(date);
   }
-  console.log("nasaData");
-  console.log(nasaData);
 
   res.render("nasa", { todayData, nasaData });
 });
@@ -85,14 +78,9 @@ app.listen(10040, () => {
 async function randomImage() {
   let url = `https://api.unsplash.com/photos/random/?client_id=${ACCESS_KEY}&featured=true&query=solar%20system&orientation=landscape`;
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.urls.regular;
-  } catch (error) {
-    console.error("Error fetching image:", error);
-    return null;
-  }
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.urls.regular;
 }
 
 async function getNasaData(date) {
