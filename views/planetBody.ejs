@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/menu.ejs") %>
+    <main class="planet_main">
+      <div
+        class="planet_bg"
+        style="
+          background-image: linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0) 0%,
+              rgba(0, 0, 0, 0.5) 50%,
+              rgba(0, 0, 0, 1) 100%
+            ),
+            url('<%= planetBodyInfo.image %>');
+        "
+      >
+        <a
+          href="<%= planetBodyInfo.websiteLink %>"
+          class="planet_title"
+          target="_blank"
+          ><%= bodyName %></a
+        >
+        <p class="planet_disc"><%= planetBodyInfo.description %></p>
+        <section class="info-container">
+          <div class="info-row">
+            <div class="info-box">
+              <div class="box-title">Distance From Sun</div>
+              <div class="box-content">
+                <p><%= planetBodyInfo.distanceFromSun %></p>
+              </div>
+            </div>
+            <div class="info-box">
+              <div class="box-title">Year Length</div>
+              <div class="box-content">
+                <p><%= planetBodyInfo.yearLength %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-box">
+              <div class="box-title">Radius</div>
+              <div class="box-content">
+                <p><%= planetBodyInfo.radius %></p>
+              </div>
+            </div>
+            <div class="info-box">
+              <div class="box-title">One Earth Day</div>
+              <div class="box-content">
+                <p><%= planetBodyInfo.oneEarthDay %></p>
+              </div>
+            </div>
+            <div class="info-box">
+              <div class="box-title">Moons</div>
+              <div class="box-content">
+                <p><%= planetBodyInfo.moons %></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/menu.ejs") %>
+    <main class="planet_main">
+      <div class="home_bg" style="background-image: url('<%= homeBg %>')">
+        <div class="home_container">
+          <h1 class="home_title">Welcome to the solar system</h1>
+          <p class="home_subtitle">
+            Choose one to see information about celestial bodies.
+          </p>
+          <form action="/planetInfo" class="home_form">
+            <section class="radio_container">
+              <div class="radio_box">
+                <input
+                  type="radio"
+                  id="Asteroid"
+                  name="selectedBody"
+                  value="Asteroid"
+                />
+                <label for="Asteroid" class="radio_label">
+                  <img
+                    src="/images/asteroid.png"
+                    alt="Asteroid"
+                    class="planet-image"
+                  />
+                  <p>Asteroid</p>
+                </label>
+              </div>
+              <div class="radio_box">
+                <input
+                  type="radio"
+                  id="Comet"
+                  name="selectedBody"
+                  value="Comet"
+                />
+                <label for="Comet" class="radio_label">
+                  <img
+                    src="/images/comet.png"
+                    alt="Comet"
+                    class="planet-image"
+                  />
+                  <p>Comet</p>
+                </label>
+              </div>
+            </section>
+            <button type="submit" class="home_btn">Display Info</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>

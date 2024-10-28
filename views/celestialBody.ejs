@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/menu.ejs") %>
+    <main class="planet_main">
+      <div
+        class="planet_bg"
+        style="
+          background-image: linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0) 0%,
+              rgba(0, 0, 0, 0.5) 50%,
+              rgba(0, 0, 0, 1) 100%
+            ),
+            url('<%= celestialBodyInfo.image %>');
+        "
+      >
+        <a
+          href="<%= celestialBodyInfo.link %>"
+          class="planet_title"
+          target="_blank"
+        >
+          <%= bodyName %>
+        </a>
+        <p class="planet_disc"><%= celestialBodyInfo.def %></p>
+      </div>
+    </main>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>

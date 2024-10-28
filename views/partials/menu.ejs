@@ -1,0 +1,37 @@
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div
+      class="bg-dark p-4 menu_wrapper"
+      style="display: flex; flex-direction: column; align-items: center"
+    >
+      <form action="/" class="menu_form">
+        <button>Home</button>
+      </form>
+      <form action="/planetInfo" method="GET" class="menu_form">
+        <button name="selectedBody" value="Mercury">Mercury</button>
+        <button name="selectedBody" value="Venus">Venus</button>
+        <button name="selectedBody" value="Earth">Earth</button>
+        <button name="selectedBody" value="Mars">Mars</button>
+        <button name="selectedBody" value="Jupiter">Jupiter</button>
+        <button name="selectedBody" value="Saturn">Saturn</button>
+        <button name="selectedBody" value="Uranus">Uranus</button>
+        <button name="selectedBody" value="Neptune">Neptune</button>
+      </form>
+      <form action="/nasa" class="menu_form">
+        <button>NASA</button>
+      </form>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button
+      class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
