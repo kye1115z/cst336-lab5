@@ -59,7 +59,13 @@ app.get("/nasa", async (req, res) => {
   let date = new Date();
   let nasaData;
 
-  date = date.toLocaleDateString("en-CA");
+  const options = {
+    timeZone: "America/Los_Angeles",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+  date = date.toLocaleDateString("en-CA", options).replace(/-/g, "-");
   let todayData = await getNasaData(date);
 
   const { month, day, year } = req.query;
